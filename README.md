@@ -23,8 +23,7 @@ In this repository, you will find a hands-on project focused on building a simpl
    - Introduction to **useState** and **useEffect** hooks in functional components
 
 4. **State Management**
-   - Understanding local vs global state
-   - Tools like **Context API** and **Redux** for state management
+   - Tools like **Context API**.
 
 5. **Tailwind CSS**
    - How to use Tailwind CSS in React projects
@@ -37,7 +36,7 @@ In this repository, you will find a hands-on project focused on building a simpl
 
 7. **React Flowstate for Developers**
    - Understanding workflow in React development
-   - Tips for building scalable and maintainable React applications
+
 
 ---
 
