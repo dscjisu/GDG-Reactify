@@ -1,0 +1,326 @@
+1. for the first part explain how a website basically renders components in the web-browser explaining the event loops and call stack
+
+(https://developer.mozilla.org/en-US/docs/Web/API)
+(also show in the presentation)
+(then switch to tldr)
+
+lets understand how JS works and how a coded website interacts with a web-browser, and lets look at some very important JS principles.
+firstly JS in itself is a single threaded language, it means that JS can handle one task at a time, because it has only one call stack 
+
+(show by using code how the call stack works)
+(show the presentation)
+(then switch to tldr)
+
+now web browsers provide  web apis that allows us to interact with several web native device features directly from the browser, instead of processing the code one by one, like web requests, rendering CSS, webgl for drawing on the canvas and hundreds of them
+
+and at last we have a specific route called the callback queue, which you can say is a specific holding cell for the async executions which take time to resolve, lets see a very short code
+to understand how it works! 
+
+(show this functioning  using code)
+(finish off with the first part and then we introduce react)
+========================================================================
+
+For the part of HOW REACT SOLVES THE ISSUES OF NORMAL JS
+
+React’s Virtual DOM helps in efficiently updating the UI by minimizing unnecessary re-renders. When the state of a component changes, React first updates the Virtual DOM, and then compares it to the actual DOM (a process called "reconciliation").
+
+React batches state updates and re-renders to optimize performance. For example, if multiple state updates happen within the same event handler (e.g., user clicks or input events), React will batch those updates into one render rather than triggering multiple renders.
+
+React uses its SyntheticEvent system to provide a normalized event handling mechanism across different browsers. This helps ensure consistent behavior across different environments.
+
+Concurrent Mode in React allows React to interrupt and pause rendering work, which is particularly useful for large applications. It enables React to prioritize updates to the UI based on the urgency of tasks. For instance, React can wait to finish rendering a non-urgent update if an urgent one (like user interaction) comes in.
+
+============================================================================
+
+
+now we need to understand why react is a framework but not a library 
+(show the ppt)
+(come back to tldr)
+
+seeking the restaurant analogy for showing what a framework is --> 
+(come back to the presentation)
+
+showing the restaurant analogy for showing what a library is -->
+(come back to the presentation)
+
+showing the lego analogy for showing what are component driven framework 
+(comeback to the presentation)
+
+==================================================EXPLAIN EXPLAIN EXPLAIN========================================
+Key Features of a Component-Based Framework
+Modularity:
+
+Applications are broken down into smaller, manageable pieces (components).
+Each component focuses on a specific task or UI section.
+Reusability:
+
+Components can be reused across different parts of the application or even in other projects.
+This saves development time and ensures consistency.
+Encapsulation:
+
+Each component manages its own state and behavior, reducing dependencies on other parts of the application.
+Ease of Maintenance:
+
+Changes in one component don’t affect others, making it easier to update or debug.
+Declarative UI:
+
+Components define how the UI should look and behave, making code easier to read and manage.
+=============================================================================
+
+EXPLAIN CLASSES VS COMPONENTS
+
+(show the tldr)
+
+
+CLASS COMPONENT --> 
+
+class Chef extends React.Component {
+  constructor() {
+    super();
+    this.state = { dish: "Empty Plate" };
+  }
+
+  cookDish() {
+    this.setState({ dish: "Cooked Meal" });
+  }
+
+  render() {
+    return <h1>{this.state.dish}</h1>;
+  }
+}
+
+
+Functional Component -->
+
+const ModernChef = () => {
+  const [dish, setDish] = React.useState("Empty Plate");
+
+  const cookDish = () => setDish("Cooked Meal");
+
+  return <h1>{dish}</h1>;
+};
+
+
+================================================================================
+
+EXPLAIN REACT'S FLOWSTATE
+
+Componentization and Modular Structure: React encourages breaking down the UI into small, reusable components. This reduces complexity and makes it easy to focus on one task at a time, just like the chef focuses on one dish at a time.
+
+Declarative Programming: React’s declarative nature allows you to describe the UI in terms of "what it should look like," not "how to update it." This makes the development process feel more intuitive and less error-prone.
+
+State Management Tools: Using state management libraries like Context API, Redux, or Zustand allows developers to handle global state cleanly, like the chef managing ingredients. This reduces the mental load of managing complex state across a large app.
+
+React DevTools & Hot Reloading: These tools give developers real-time feedback, making it easier to iterate on ideas quickly—like the chef tasting and adjusting the dish as they go.
+
+
+****draw the box for the react priority endering*****
+
+===================================================================================
+PROJECT STRUCTURE
+
+
+reactify-project
+  public/
+    index.html --> entry point for the project
+  src/
+    components/
+      card.js
+    app.js
+    index.css
+
+    .
+    .
+    .
+
+
+
+commands  to initialize react project 
+
+
+npx create-react-app reactify-project
+cd reactify-project
+npm install -D tailwindcss postcss autoprefixer
+npx tailwindcss init
+npm install web-vitals
+
+
+
+
+
+PROJECT STRUCTURE EXPLANATION
+
+1. public/index.html
+This is the single HTML file that serves as the entry point for your application. It contains a div with the id="root", which is where the React app will be injected.
+
+Purpose: It's a static file that serves as the wrapper around your dynamic React app.
+Example:
+
+
+<div id="root"></div>
+React components are rendered inside this div by the code in src/index.js.
+
+
+
+
+
+2. src/index.js
+This file is the starting point of the React app. It’s responsible for rendering your React application (from App.js) into the root element defined in index.html.
+
+Purpose: It connects the React app to the DOM. It essentially "boots up" the React app.
+Explanation: The ReactDOM.render(<App />, document.getElementById('root')) line tells React to render the App component inside the root div.
+Example
+
+import React from 'react';
+import ReactDOM from 'react-dom/client';
+import './index.css';
+import App from './App';
+import reportWebVitals from './reportWebVitals';
+
+const root = ReactDOM.createRoot(document.getElementById('root'));
+root.render(
+  <React.StrictMode>
+    <App />
+  </React.StrictMode>
+);
+
+// If you want to start measuring performance in your app, pass a function
+// to log results (for example: reportWebVitals(console.log))
+// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
+reportWebVitals();
+
+
+
+
+3. src/App.js
+This is the main component of the app, and it holds the general structure of the UI. Here, we’re rendering the Card component.
+
+Purpose: The App.js file is the root component that holds other components and is the "top-level" component in your application.
+Explanation:
+The Card component is imported and used here.
+It contains the layout and logic for the whole app.
+You can think of it as the “container” for other components.
+Example:
+
+
+import React from "react";
+import Card from "./components/card";
+function App() {
+  return (
+    <div className="flex justify-center items-center min-h-screen bg-gray-600 select-none">
+      <Card /> 
+    </div>
+  );
+}
+
+export default App;
+
+
+
+
+
+4. src/components/card.js
+This is a reusable component that represents the card UI.
+
+Purpose: To define and structure the Card UI (e.g., title, description, image, tags).
+Explanation:
+The Card component is given props (title, description, image) that it uses to display dynamic content.
+It contains Tailwind CSS classes to style the card (e.g., shadow, rounded corners).
+Example:
+
+
+import React from "react";
+
+const Card = () => {
+return (
+    <div className="flex flex-col bg-white rounded-3xl shadow-lg scale-[1.7]">
+        <div className="px-6 py-8 sm:p-10 sm:pb-6">
+            <div className="grid w-full grid-cols-1 text-left">
+
+
+                <div>
+                <div className="relative flex space-x-1 left-0 ">
+                    <h2 className="text-lg font-medium tracking-tighter text-green-600 lg:text-3xl">
+                            React
+                    </h2>
+                    <h2 className="text-lg font-medium tracking-tighter text-gray-600 lg:text-3xl">
+                            - ify
+                    </h2>
+                    </div>
+                    <p className="mt-2 text-sm text-gray-500">
+                        GDG on Campus
+                    </p>
+                </div>
+
+
+                <div className="mt-6">
+                    <p>
+                        <span className="text-5xl font-light tracking-tight text-black">
+                            $0 (Free)
+                        </span>
+                        <span className="text-base font-medium text-gray-500"> /mo </span>
+                    </p>
+                </div>
+
+
+            </div>
+        </div>
+        
+        <div className="flex px-6 pb-8 sm:px-8">
+        <button
+            aria-describedby="tier-company"
+            className="items-center justify-center w-full px-6 py-2.5 text-center text-white duration-200 bg-lime-600 border-2 border-lime-900 rounded-full inline-flex hover:bg-transparent hover:border-black hover:text-black focus:outline-none focus-visible:outline-black text-lg focus-visible:ring-black"
+        >
+        Welcome
+        </button>
+
+        </div>
+    </div>
+);
+};
+
+export default Card;
+
+
+
+
+
+
+5. src/index.css
+This file includes the global CSS for the React app. It’s where we include Tailwind CSS’s utility classes.
+
+Purpose: This is the global stylesheet where Tailwind’s base, components, and utility classes are injected.
+Explanation:
+We import Tailwind’s core styles here using @tailwind base, @tailwind components, and @tailwind utilities.
+This file acts as the bridge between your custom styles and the utility-first classes provided by Tailwind.
+Example:
+
+
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+6. tailwind.config.js
+
+
+This file is the configuration file for Tailwind CSS. It defines how Tailwind should operate within your project.
+
+Purpose: Customize Tailwind’s default settings, such as colors, spacing, and breakpoints.
+Explanation:
+By default, Tailwind CSS provides a set of utility classes. This file allows you to extend or override those classes.
+The content array tells Tailwind where to look for classes (e.g., in src folder).
+Example:
+
+
+/** @type {import('tailwindcss').Config} */
+module.exports = {
+  content: [
+    "./src/**/*.{js,jsx,ts,tsx}",  // Tailwind will look for classes in these files
+  ],
+  theme: {
+    extend: {},
+  },
+  plugins: [],
+};
