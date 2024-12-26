@@ -72,6 +72,34 @@ In this repository, you will find a hands-on project focused on building a simpl
 
 ---
 
+## Roadmap 
+
+```mermaid
+flowchart TD
+    A[React Roadmap] --> B[Learn JavaScript Basics]
+    B --> C[Understand ES6+ Features]
+    C --> D[Learn JSX]
+    D --> E[Understand Components]
+    E --> F[Class Components vs Functional Components]
+    F --> G[State and Props]
+    G --> H[Hooks]
+    H --> I[useState and useEffect]
+    I --> J[React Router]
+    J --> K[State Management]
+    K --> L[Redux or Context API]
+    L --> M[Build Reusable Components]
+    M --> N[API Integration]
+    N --> O[Testing React Apps]
+    O --> P[Optimize Performance]
+    P --> Q[Learn Deployment]
+    Q --> R[Explore Advanced Topics]
+    R --> S[Server-Side Rendering ]
+    R --> T[Static Site Generation ]
+    T --> U[Next.js]
+    S --> U
+```
+
+
 ## License
 
 This project is licensed under the MIT License.
