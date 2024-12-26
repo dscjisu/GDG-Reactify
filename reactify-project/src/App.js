@@ -1,11 +1,10 @@
-// src/App.js
 import React from "react";
-import Card from "./card"; // Import the Card component
+import Card from "./components/card";
 
 function App() {
   return (
-    <div className="flex justify-center items-center min-h-screen bg-gray-100">
-      <Card /> {/* Display the Card component */}
+    <div className="flex justify-center items-center min-h-screen bg-gray-600 select-none">
+      <Card /> 
     </div>
   );
 }
