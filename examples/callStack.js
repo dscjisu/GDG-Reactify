@@ -11,3 +11,5 @@ function outerFunction() {
 }
 
 outerFunction();
+
+//JS WORKS ON THE BASIS OF A SINGLE STACK FRAME
