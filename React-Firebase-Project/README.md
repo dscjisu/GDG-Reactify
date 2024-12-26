@@ -2,6 +2,11 @@
 
 A simple React app built using Vite, Tailwind CSS, and Firebase. This project includes a sign-up functionality with Google authentication and an admission form to store user data in Firebase Realtime Database.
 
+## Links
+ 1. [Firebase Docs](https://firebase.google.com/docs)
+ 2. [Project IDX](https://idx.dev/)
+ 2. [Socials](https://linktr.ee/DevyManish)
+
 ## Table of Contents
 
 1. [Getting Started](#getting-started)
