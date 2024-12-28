@@ -6,6 +6,7 @@ A simple React app built using Vite, Tailwind CSS, and Firebase. This project in
  1. [Firebase Docs](https://firebase.google.com/docs)
  2. [Project IDX](https://idx.dev/)
  2. [Socials](https://linktr.ee/DevyManish)
+ 2. [Slides](https://github.com/dscjisu/GDG-Reactify/blob/main/React-Firebase-Project/Reactify-PPT.pdf)
 
 ## Table of Contents
 
